@@ -8,7 +8,22 @@
 import UIKit
 
 
-class ChecklistViewController: UITableViewController {
+class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+    
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addItemViewControler(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+        let newRowIndex = items.count
+        items.append(item)
+    
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     var items = [ChecklistItem]()
     
@@ -52,9 +67,6 @@ class ChecklistViewController: UITableViewController {
         items.append(item7)
     }
     
-    
-
-    
     override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
@@ -93,19 +105,6 @@ class ChecklistViewController: UITableViewController {
 
             
     //MARK: Actions
-    @IBAction func addItem(_ sender: Any) {
-        let newRowIndex = items.count
-        
-        let item = ChecklistItem()
-        item.text = "I am a new row"
-        item.checked = true
-        items.append(item)
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
-    }
-    
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
         if item.checked {
            cell.accessoryType = .checkmark
@@ -120,6 +119,14 @@ class ChecklistViewController: UITableViewController {
     ) {
       let label = cell.viewWithTag(1000) as! UILabel
       label.text = item.text
+    }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem" {
+            let controller = segue.destination as! AddItemViewController
+            controller.delegate = self
+        }
     }
     
 }
