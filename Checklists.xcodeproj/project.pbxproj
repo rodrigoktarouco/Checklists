@@ -13,7 +13,7 @@
 		C32410D528CF54D300131478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32410D328CF54D300131478 /* Main.storyboard */; };
 		C32410D728CF54D600131478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32410D628CF54D600131478 /* Assets.xcassets */; };
 		C32410DA28CF54D600131478 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32410D828CF54D600131478 /* LaunchScreen.storyboard */; };
-		C375402528D2152B00019BCC /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C375402428D2152B00019BCC /* AddItemViewController.swift */; };
+		C375402528D2152B00019BCC /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C375402428D2152B00019BCC /* ItemDetailViewController.swift */; };
 		C3C1959F28D0A31A00F0F65B /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1959E28D0A31A00F0F65B /* ChecklistItem.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		C32410D628CF54D600131478 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C32410D928CF54D600131478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C32410DB28CF54D600131478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C375402428D2152B00019BCC /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		C375402428D2152B00019BCC /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		C3C1959E28D0A31A00F0F65B /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +63,7 @@
 				C32410CD28CF54D300131478 /* AppDelegate.swift */,
 				C32410CF28CF54D300131478 /* SceneDelegate.swift */,
 				C3C1959E28D0A31A00F0F65B /* ChecklistItem.swift */,
-				C375402428D2152B00019BCC /* AddItemViewController.swift */,
+				C375402428D2152B00019BCC /* ItemDetailViewController.swift */,
 				C32410D128CF54D300131478 /* ChecklistViewController.swift */,
 				C32410D328CF54D300131478 /* Main.storyboard */,
 				C32410D628CF54D600131478 /* Assets.xcassets */,
@@ -144,7 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C375402528D2152B00019BCC /* AddItemViewController.swift in Sources */,
+				C375402528D2152B00019BCC /* ItemDetailViewController.swift in Sources */,
 				C32410D228CF54D300131478 /* ChecklistViewController.swift in Sources */,
 				C32410CE28CF54D300131478 /* AppDelegate.swift in Sources */,
 				C32410D028CF54D300131478 /* SceneDelegate.swift in Sources */,

@@ -16,27 +16,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="FN0-yN-HCZ">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="FN0-yN-HCZ">
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FN0-yN-HCZ" id="lD1-fh-2x7">
-                                    <rect key="frame" x="0.0" y="0.0" width="338.5" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="322" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nk-3x-4t1">
+                                            <rect key="frame" x="16" y="5" width="19" height="27"/>
+                                            <string key="text" base64-UTF8="YES">
+FuKImiA
+</string>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udp-Fz-ibs">
-                                            <rect key="frame" x="16" y="11" width="308" height="21.5"/>
+                                            <rect key="frame" x="43" y="10" width="41.5" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="udp-Fz-ibs" firstAttribute="top" secondItem="lD1-fh-2x7" secondAttribute="topMargin" id="3dZ-uO-WsV"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="udp-Fz-ibs" secondAttribute="bottom" constant="0.5" id="4vn-pr-YYv"/>
-                                        <constraint firstItem="udp-Fz-ibs" firstAttribute="leading" secondItem="lD1-fh-2x7" secondAttribute="leadingMargin" id="jqp-dG-d4e"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="udp-Fz-ibs" secondAttribute="trailing" constant="6.5" id="pzn-1N-oHZ"/>
+                                        <constraint firstItem="udp-Fz-ibs" firstAttribute="top" secondItem="lD1-fh-2x7" secondAttribute="topMargin" constant="-1" id="3dZ-uO-WsV"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="udp-Fz-ibs" secondAttribute="bottom" constant="2" id="4vn-pr-YYv"/>
+                                        <constraint firstItem="udp-Fz-ibs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4Nk-3x-4t1" secondAttribute="trailing" constant="8" symbolic="YES" id="52k-Rc-7P2"/>
+                                        <constraint firstItem="4Nk-3x-4t1" firstAttribute="centerY" secondItem="udp-Fz-ibs" secondAttribute="centerY" constant="-2.5" id="V8f-cw-yzs"/>
+                                        <constraint firstItem="4Nk-3x-4t1" firstAttribute="bottom" secondItem="udp-Fz-ibs" secondAttribute="bottom" id="jVu-jS-JlJ"/>
+                                        <constraint firstItem="udp-Fz-ibs" firstAttribute="leading" secondItem="lD1-fh-2x7" secondAttribute="leadingMargin" constant="27" id="jqp-dG-d4e"/>
+                                        <constraint firstItem="4Nk-3x-4t1" firstAttribute="leading" secondItem="lD1-fh-2x7" secondAttribute="leadingMargin" id="mre-2k-DMg"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="udp-Fz-ibs" secondAttribute="trailing" id="pzn-1N-oHZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="l7X-f3-NAM" kind="show" identifier="EditItem" trigger="accessoryAction" id="sbS-dt-I3b"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -59,7 +75,7 @@
         <!--Add item-->
         <scene sceneID="hlI-3A-N4n">
             <objects>
-                <tableViewController id="l7X-f3-NAM" customClass="AddItemViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="l7X-f3-NAM" customClass="ItemDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="dMx-fW-6pi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,6 +156,9 @@
             <point key="canvasLocation" x="74.400000000000006" y="141.67916041979012"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="sbS-dt-I3b"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
