@@ -45,39 +45,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
-        // Replace previous code with the following
-        let item1 = ChecklistItem()
-        item1.text = "Walk the dog"
-        items.append(item1)
-        
-        let item2 = ChecklistItem()
-        item2.text = "Brush my teeth"
-        item2.checked = true
-        items.append(item2)
-        
-        let item3 = ChecklistItem()
-        item3.text = "Learn iOS development"
-        item3.checked = true
-        items.append(item3)
-        
-        let item4 = ChecklistItem()
-        item4.text = "Soccer practice"
-        items.append(item4)
-        
-        let item5 = ChecklistItem()
-        item5.text = "Eat ice cream"
-        items.append(item5)
-        
-        let item6 = ChecklistItem()
-        item6.text = "Feed the dog!"
-        items.append(item6)
-        
-        let item7 = ChecklistItem()
-        item7.text = "Make dinner!"
-        item7.checked = true
-        items.append(item7)
+        loadChecklistItems()
         
         print("Documents folder is \(documentsDirectory())")
         print("Data file path is \(dataFilePath())")
@@ -174,6 +142,18 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
         } catch {
             print("Error enconding item array: \(error.localizedDescription)")
+        }
+    }
+    //MARK: Load data to a file
+    func loadChecklistItems() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                items = try decoder.decode([ChecklistItem].self, from: data)
+            } catch {
+                print("Error decodint item array: \(error.localizedDescription)")
+            }
         }
     }
     
