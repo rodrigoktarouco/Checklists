@@ -30,8 +30,8 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             title = "Edit item"
             textField.text = itemToEdit.text
             doneBarButton.isEnabled = true
+            
         }
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +78,8 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         doneBarButton.isEnabled = false
         return true
     }
+    
+    
     
     
 }

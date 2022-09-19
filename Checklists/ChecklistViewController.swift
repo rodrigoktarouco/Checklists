@@ -21,6 +21,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         let indexPath = IndexPath(row: newRowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
+        saveChecklistItems()
         navigationController?.popViewController(animated: true)
     }
     
@@ -34,6 +35,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
           configureText(for: cell, with: item)
         }
       }
+      saveChecklistItems()
       navigationController?.popViewController(animated: true)
     }
 
@@ -76,6 +78,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         item7.text = "Make dinner!"
         item7.checked = true
         items.append(item7)
+        
+        print("Documents folder is \(documentsDirectory())")
+        print("Data file path is \(dataFilePath())")
     }
     
     override func tableView(
@@ -112,6 +117,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
 
       let indexPaths = [indexPath]
       tableView.deleteRows(at: indexPaths, with: .automatic)
+      saveChecklistItems()
     }
 
             
@@ -125,6 +131,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
          } else {
            label.text = ""
          }
+         saveChecklistItems()
     }
     
     func configureText(
@@ -147,6 +154,26 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 controller.itemToEdit = items[indexPath.row]
             }
+        }
+    }
+    //MARK: Get the save the file path
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
+    //MARK: Save data to a file
+    func saveChecklistItems() {
+        let encoder = PropertyListEncoder()        
+        do {
+            let data = try encoder.encode(items)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error enconding item array: \(error.localizedDescription)")
         }
     }
     
