@@ -40,9 +40,11 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
 
     var items = [ChecklistItem]()
+    var checklist: Checklist!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         navigationItem.largeTitleDisplayMode = .never
 
@@ -50,6 +52,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         print("Documents folder is \(documentsDirectory())")
         print("Data file path is \(dataFilePath())")
+        title = checklist.name
     }
     
     override func tableView(
